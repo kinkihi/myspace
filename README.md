@@ -1,4 +1,4 @@
-This is a [My Space](https://myspace.d5render.com) project from [`D5 Render`](https://d5render.com)
+This is a [My Space](https://myspace.d5render.com) project from [D5 Render](https://d5render.com)
 
 ## Getting Started
 
