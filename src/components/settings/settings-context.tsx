@@ -4,7 +4,7 @@ import * as React from "react"
 
 type SettingsTab = "general" | "workspace"
 
-export type AppPage = "settings" | "certification" | "teamData" | "login"
+export type AppPage = "settings" | "certification" | "teamData" | "login" | "recentProjects" | "teamProjects"
 
 type SettingsContextProps = {
   activeTab: SettingsTab
@@ -20,7 +20,7 @@ const SettingsContext = React.createContext<SettingsContextProps | null>(null)
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
   const [activeTab, setActiveTab] = React.useState<SettingsTab>("workspace")
-  const [activePage, setActivePage] = React.useState<AppPage>("settings")
+  const [activePage, setActivePage] = React.useState<AppPage>("recentProjects")
   const [notificationOpen, setNotificationOpen] = React.useState(false)
 
   const toggleNotification = React.useCallback(() => {

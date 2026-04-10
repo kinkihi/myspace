@@ -3,6 +3,8 @@
 import { CertificationPage } from "@/components/certification/certification-page"
 import { TeamDataPage } from "@/components/team-data/team-data-page"
 import { LoginPage } from "@/components/auth/login-page"
+import { RecentProjectsPage } from "@/components/recent-projects/recent-projects-page"
+import { TeamProjectsPage } from "@/components/team-projects/team-projects-page"
 import { TeamProfile } from "@/components/settings/team-profile"
 import { CloudStorage } from "@/components/settings/cloud-storage"
 import { FeatureManagement } from "@/components/settings/feature-management"
@@ -17,6 +19,14 @@ import { useSettings } from "@/components/settings/settings-context"
 
 export default function SettingsPage() {
   const { activeTab, activePage } = useSettings()
+
+  if (activePage === "recentProjects") {
+    return <RecentProjectsPage />
+  }
+
+  if (activePage === "teamProjects") {
+    return <TeamProjectsPage />
+  }
 
   if (activePage === "certification") {
     return <CertificationPage />

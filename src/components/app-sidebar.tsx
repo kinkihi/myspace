@@ -46,9 +46,14 @@ import {
   type AppPage,
 } from "@/components/settings/settings-context"
 
-const navShowreel = [
-  { title: "最近使用", url: "#", icon: ClockIcon },
-  { title: "团队项目", url: "#", icon: BoxIcon },
+const navShowreel: {
+  title: string
+  icon: React.ComponentType<{ className?: string }>
+  page?: AppPage
+  url?: string
+}[] = [
+  { title: "最近使用", icon: ClockIcon, page: "recentProjects" },
+  { title: "团队项目", icon: BoxIcon, page: "teamProjects" },
 ]
 
 const navOrganization: (
@@ -167,13 +172,24 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenu>
             {navShowreel.map((item) => (
               <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton
-                  tooltip={item.title}
-                  render={<a href={item.url} />}
-                >
-                  <item.icon className="size-4" />
-                  <span>{item.title}</span>
-                </SidebarMenuButton>
+                {item.page ? (
+                  <SidebarMenuButton
+                    tooltip={item.title}
+                    isActive={activePage === item.page}
+                    onClick={() => setActivePage(item.page!)}
+                  >
+                    <item.icon className="size-4" />
+                    <span>{item.title}</span>
+                  </SidebarMenuButton>
+                ) : (
+                  <SidebarMenuButton
+                    tooltip={item.title}
+                    render={<a href={item.url} />}
+                  >
+                    <item.icon className="size-4" />
+                    <span>{item.title}</span>
+                  </SidebarMenuButton>
+                )}
               </SidebarMenuItem>
             ))}
           </SidebarMenu>
